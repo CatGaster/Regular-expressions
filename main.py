@@ -20,6 +20,7 @@ def split_name(names_list):
             start += stop
     return full_name
 
+
 def remove_duplicates(contacts_list):
     result_dict = {}
     for row in contacts_list:
@@ -35,11 +36,13 @@ def remove_duplicates(contacts_list):
             result_dict[key] = [data_dict]
     return result_dict
 
+
 def extract_names(contacts_list):
 
     for row in contacts_list:
         row[:3] = split_name(row[:3])
     return contacts_list
+
 
 def write_contacts(result_dict, header):
     with open("phonebook.csv", "w", encoding="utf-8", newline='') as f:
@@ -64,8 +67,8 @@ def fix_phone():
     with open("phonebook.csv", "w", encoding="utf-8", newline='') as f:
         f.write(result)
 
+
 if __name__ == '__main__':
-    
     NAME = 'phonebook_raw.csv'
     contacts_list = read_file(NAME)
     extract_names(contacts_list[1:])
